@@ -2,12 +2,9 @@
     This project is for testing money transfer using razorpay
 
 """
-from dataclasses import dataclass
-from email import header
 import pandas as pd
 import pyAesCrypt as crypt
 import numpy as np
-# import pyrebase
 import os
 import csv
 
@@ -15,7 +12,6 @@ class Chit:
 
     def __init__(self):
         pass
-
 
 class User(Chit):
 
@@ -36,7 +32,7 @@ class User(Chit):
         self.phone = phone
     
     def sign_up(self):
-
+        
         pass
 
     def show_details(self):
@@ -45,6 +41,25 @@ class User(Chit):
                 {self.first_name} {self.last_name}: {self.username}, {self.email}
                 """
 
+class Jar(Chit):
+
+    def __init__(self,jar_name,gigs,reccurr,maturity,member_count):
+        self.jar_name = jar_name
+        self.gigs = gigs
+        self.reccurr = reccurr
+        self.maturity = maturity
+        self.member_count = self.maturity
+    
+    def jar_info(self):
+
+        return f"""
+        Jar Name: {self.jar_name}
+        Jar Gigs: {self.gigs}
+        Recurrence: {self.reccurr}
+        Maturity: {self.maturity}
+        Members: {self.member_count}
+        Jar End: {self.reccurr * self.maturity}
+        """
 
 class EncryptDecrypt(Chit):
 
@@ -85,7 +100,7 @@ class Data(Chit):
 
     def write_to_csv(self):
 
-        if len(os.listdir(self.file_path)) == 0:
+        if f"{self.file_name}" not in os.listdir(self.file_path):
             header = ['First Name','Last Name','Username','Password','Email','Phone','File Location']
             with open(f"{self.file_path}/{self.file_name}", "w") as file:
 
@@ -105,6 +120,9 @@ class StructData():
 
     def read_data_frame(self,file_loc):
 
-        return pd.read_csv(file_loc)
+        data =  pd.read_csv(file_loc)
+        return pd.DataFrame(data=data)
+
+        
 
         

@@ -24,7 +24,6 @@ data = Data(file_path=user_data[-1],
 
 data.write_to_csv()
 
-
 struct_data = StructData()
 
 print(struct_data.read_data_frame(f"{data.file_path}/{data.file_name}"))
