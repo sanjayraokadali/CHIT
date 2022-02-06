@@ -7,11 +7,51 @@ import pyAesCrypt as crypt
 import numpy as np
 import os
 import csv
+from cryptography.fernet import Fernet
+import MySQLdb
+
 
 class Chit:  
 
     def __init__(self):
         pass
+
+class SqlDB(Chit):
+
+    def __init__(self,
+                 localhost,
+                 username,
+                 password,
+                 database
+                 ):
+        
+        self.localhost = localhost
+        self.database = database
+        self.username = username
+        self.password = password
+    
+    def sql_connection(self):
+
+        return MySQLdb.connect(self.localhost,
+                               self.username,
+                               self.password,
+                               self.database)
+    
+    def insert_user(self, obj, data, file_loc):
+
+        sql = obj.sql_connection()
+        cursor = sql.cursor()
+
+        cursor.execute(
+            f"""
+                INSERT INTO UserDB.TABLE_USER values
+                ('{data.first_name}','{data.last_name}','{data.username}','{data.password}','{data.email}','{data.phone}','{file_loc}');
+            """
+        )
+
+        cursor.execute("commit;")
+
+        return True
 
 class User(Chit):
 
@@ -38,12 +78,20 @@ class User(Chit):
     def show_details(self):
 
         return f"""
+
                 {self.first_name} {self.last_name}: {self.username}, {self.email}
+
                 """
 
 class Jar(Chit):
 
-    def __init__(self,jar_name,gigs,reccurr,maturity,member_count):
+    def __init__(self,
+                 jar_name,
+                 gigs,
+                 reccurr,
+                 maturity
+                 ):
+
         self.jar_name = jar_name
         self.gigs = gigs
         self.reccurr = reccurr
@@ -63,6 +111,15 @@ class Jar(Chit):
 
 class EncryptDecrypt(Chit):
 
+    bufferSize = 60 * 60 * 1024
+    aes_password = 'password'
+
+
+    key = Fernet.generate_key()
+
+    global fernet
+    fernet = Fernet(key)
+
     def data_encrypter(self):
 
         return crypt.encryptFile("some data")
@@ -70,8 +127,17 @@ class EncryptDecrypt(Chit):
     def data_decrypter(self):
 
         return crypt.decryptFile("some data")
+    
+    def string_encrypter(self,message):
 
-class UpCloud(Chit):
+        return fernet.encrypt(message.encode())
+    
+    def string_decrypter(self,message):
+
+        return fernet.decrypt(message).decode()
+
+
+class ToCloud(Chit):
 
     def __init__(self,configs):
 

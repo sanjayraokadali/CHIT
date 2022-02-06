@@ -1,10 +1,11 @@
 from Root import *
 
-user = User(first_name='Alice',
-            last_name='Fisher',
-            username='alice.fisher',
-            password='Alice@123',
-            email="alice.f@chit.com",
-            phone='+917894561230')
+crypter = EncryptDecrypt()
 
-print(user.show_details())
+message = "Some message"
+
+En_message = crypter.string_encrypter(message)
+print(En_message)
+
+De_message = crypter.string_decrypter(En_message)
+print(De_message)

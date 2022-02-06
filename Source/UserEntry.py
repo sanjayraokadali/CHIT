@@ -27,3 +27,15 @@ data.write_to_csv()
 struct_data = StructData()
 
 print(struct_data.read_data_frame(f"{data.file_path}/{data.file_name}"))
+
+sqldb = SqlDB("localhost", "sanjayraokadali", "23March_an", "UserDB")
+
+
+insertion = sqldb.insert_user(obj = sqldb, 
+                             data = user, 
+                             file_loc = user_data[-1]
+                             )
+
+if insertion:
+
+    print("User inserted to Database")
