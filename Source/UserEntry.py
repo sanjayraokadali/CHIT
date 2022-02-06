@@ -1,12 +1,13 @@
 from Root import *
 
+crypter = EncryptDecrypt()
 
-user = User(first_name='Alice',
-            last_name='Fisher',
-            username='alice.fisher',
-            password='Alice@123',
-            email="alice.f@chit.com",
-            phone='+917894561230')
+user = User(first_name='Dom',
+            last_name='Wills',
+            username='dom.wills',
+            password= 'Dom@123',
+            email="dom.w@chit.com",
+            phone='+919804003214')
 
 
 user_data = [user.first_name,
@@ -26,15 +27,9 @@ data.write_to_csv()
 
 struct_data = StructData()
 
-print(struct_data.read_data_frame(f"{data.file_path}/{data.file_name}"))
-
 sqldb = SqlDB("localhost", "sanjayraokadali", "23March_an", "UserDB")
 
-
-insertion = sqldb.insert_user(obj = sqldb, 
-                             data = user, 
-                             file_loc = user_data[-1]
-                             )
+insertion = sqldb.insert_user(obj = sqldb, data = user, file_loc = user_data[-1])
 
 if insertion:
 

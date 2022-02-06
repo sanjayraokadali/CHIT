@@ -37,20 +37,28 @@ class SqlDB(Chit):
                                self.password,
                                self.database)
     
-    def insert_user(self, obj, data, file_loc):
+    def insert_user(self, 
+                    obj, 
+                    data, 
+                    file_loc):
 
-        sql = obj.sql_connection()
-        cursor = sql.cursor()
+        cursor = obj.sql_connection().cursor()
 
         cursor.execute(
             f"""
                 INSERT INTO UserDB.TABLE_USER values
-                ('{data.first_name}','{data.last_name}','{data.username}','{data.password}','{data.email}','{data.phone}','{file_loc}');
+                ('{data.first_name}',
+                '{data.last_name}',
+                '{data.username}',
+                '{data.password}',
+                '{data.email}',
+                '{data.phone}',
+                '{file_loc}'
+                );
             """
         )
 
         cursor.execute("commit;")
-
         return True
 
 class User(Chit):

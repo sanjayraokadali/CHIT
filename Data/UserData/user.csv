@@ -1,2 +1,10 @@
-First Name,Last Name,Username,Password,Email,Phone,File Location
-Alice,Fisher,alice.fisher,Alice@123,alice.f@chit.com,+917894561230,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
+First Name,Last Name,Username,Password,Email,Phone,File Location
+
+Alice,Fisher,alice.fisher,Alice@123,alice.f@chit.com,+917894561230,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
+Bob,Smiths,bob.smiths,Bob@123,bob.s@chit.com,+919874563210,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
+Ceaser,Black,ceaser.black,Ceaser@123,ceaser.b@chit.com,+919874563214,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
+
+Ceaser,Tims,ceaser.tims,CeaserTims@123,ceaser.t@chit.com,+919804563214,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
+Dom,Wills,dom.wills,b'gAAAAABh_8hRX_2yZhsBcRmaNUcyAmFs7Ryi_olNbRZDJM6OspkjqEGUUpHooBPhBLi8GmaFcD02Lw6N7eMHDInOI7j9Fog5wA==',dom.w@chit.com,+919804003214,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
+Dom,Wills,dom.wills,b'gAAAAABh_8hwQto3pkRhnsTQnHkSWA-EKXWKWhA1XRdC84QLpnsHHQWpnmlQSQu7BKA5GIKFf5S_7SP1jV4-39tZmnqSFHzqCg==',dom.w@chit.com,+919804003214,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
+Dom,Wills,dom.wills,Dom@123,dom.w@chit.com,+919804003214,C:/Users/91701/Documents/GitHub/CHIT/Data/UserData
